@@ -1,0 +1,180 @@
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: #EDF2F8;
+
+    .container {
+        width: 1200px;
+
+        .back {
+            width: 69px;
+            height: 21px;
+            margin: 76px 0 48px 0;
+        }
+
+        .content {
+            height: 754px;
+            background: white;
+
+            .header {
+                background: orange;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 40px 0 27px 0;
+
+                .discount {
+                    width: 105px;
+                    height: 50px;
+                    background: red;
+                    margin-left: 80px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .logo {
+                    width: 160px;
+                    height: 77px;
+                    background: gray;
+                    margin-right: 80px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: red;
+
+                    img {
+                        width: inherit;
+                        height: inherit;
+                        object-fit: contain;
+                    }
+                }
+            }
+
+            .content_body {
+                background: green;
+                display: flex;
+                padding: 0 80px 77px 90px;
+
+                .picture {
+                    width: 415px;
+                    height: 415px;
+                    margin-right: 74px;
+
+                    img {
+                        width: inherit;
+                        height: inherit;
+                        object-fit: contain;
+                    }
+                }
+
+                .name_group {
+                    background: darkcyan;
+                    display: flex;
+                    flex-direction: column;
+                    width: 539px;
+
+                    .name {
+                        background: darkolivegreen;
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 37.6651px;
+                        line-height: 120%
+                    }
+
+                    .price_group {
+                        display: flex;
+                        padding-bottom: 44px;
+                        justify-content: space-between;
+                        background: #9DA8BA;
+                        height: 100%;
+
+                        .price_group_old {
+                            background: orange;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: end;
+                            align-items: center;
+
+                            .price_old {
+                                display: flex;
+                                flex-direction: row;
+                                flex-wrap: nowrap;
+                                color: #94979C;
+                                font-family: 'Poppins', sans-serif;
+                                font-style: normal;
+                                font-weight: 600;
+                                font-size: 32px;
+                                height: 32px;
+                                background: darkcyan;
+                                position: relative;
+                                .rubles {
+                                }
+
+                                .penny {
+                                    font-size: 16px;
+                                    line-height: 17px;
+                                    margin: 3px 3px 0 0;
+                                }
+
+                            }
+
+                            .line {
+                                position: relative;
+                                bottom: 16px;
+                                border: 3.46909px solid #FF0000;
+                                width: 126px;
+
+                            }
+
+                            .description_old {
+                                font-family: 'Poppins', sans-serif;
+                                font-style: normal;
+                                font-weight: 600;
+                                font-size: 18.5018px;
+                                line-height: 27px;
+                                color: #6F7885;
+                            }
+                        }
+
+                        .price_group_new {
+                            margin: 39px 0 0 0;
+                            background: blue;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: end;
+                            align-items: center;
+
+                            .price_stars {
+                                width: 185px;
+                                height: 53px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                svg {
+                                    height: 25px;
+                                    width: auto;
+                                }
+                            }
+
+                            .price_new {
+                                font-style: normal;
+                                font-weight: 600;
+                                font-size: 52.0364px;
+                                line-height: 27px;
+                            }
+
+                            .description_new {
+
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

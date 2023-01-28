@@ -1,0 +1,20 @@
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+
+    .content_wrapper {
+        max-width: 1200px;
+        width: 100%;
+        margin-top: 136px;
+        p {
+            margin-bottom: 24px;
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 23px;
+            color: #344050;
+        }
+    }
+}
