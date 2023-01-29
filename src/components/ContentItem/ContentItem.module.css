@@ -5,92 +5,126 @@
   justify-content: center;
   background: #EDF2F8;
 }
-.wrapper .container {
+
+.container {
   width: 1200px;
 }
-.wrapper .container .back {
-  width: 69px;
-  height: 21px;
+
+.back {
   margin: 76px 0 48px 0;
 }
-.wrapper .container .content {
+.back a {
+  color: #344050;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+}
+.back a svg {
+  height: 12px;
+}
+
+.content {
   height: 754px;
   background: white;
 }
-.wrapper .container .content .header {
-  background: orange;
+
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 40px 0 27px 0;
 }
-.wrapper .container .content .header .discount {
+
+.discount {
   width: 105px;
-  height: 50px;
-  background: red;
+  height: 36px;
   margin-left: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.wrapper .container .content .header .logo {
+.discount .rectangular {
+  width: 73px;
+  height: inherit;
+  background: #F73A3A;
+  border-radius: 5px 2px 2px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 27px;
+  color: white;
+}
+.discount img {
+  position: relative;
+  right: 7px;
+}
+
+.logo {
   width: 160px;
   height: 77px;
-  background: gray;
   margin-right: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: red;
 }
-.wrapper .container .content .header .logo img {
+.logo img {
   width: inherit;
   height: inherit;
   object-fit: contain;
 }
-.wrapper .container .content .content_body {
-  background: green;
+
+.content_body {
   display: flex;
   padding: 0 80px 77px 90px;
 }
-.wrapper .container .content .content_body .picture {
+
+.picture {
   width: 415px;
   height: 415px;
   margin-right: 74px;
 }
-.wrapper .container .content .content_body .picture img {
+.picture img {
   width: inherit;
   height: inherit;
   object-fit: contain;
 }
-.wrapper .container .content .content_body .name_group {
-  background: darkcyan;
+
+.name_group {
   display: flex;
   flex-direction: column;
   width: 539px;
 }
-.wrapper .container .content .content_body .name_group .name {
-  background: darkolivegreen;
+.name_group .name {
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 37.6651px;
   line-height: 120%;
+  color: #344050;
+  width: 95%;
 }
-.wrapper .container .content .content_body .name_group .price_group {
+
+.price_group {
   display: flex;
   padding-bottom: 44px;
   justify-content: space-between;
-  background: #9DA8BA;
   height: 100%;
 }
-.wrapper .container .content .content_body .name_group .price_group .price_group_old {
-  background: orange;
+
+.price_group_old {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
 }
-.wrapper .container .content .content_body .name_group .price_group .price_group_old .price_old {
+.price_group_old .price_old {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -99,53 +133,105 @@
   font-style: normal;
   font-weight: 600;
   font-size: 32px;
-  height: 32px;
-  background: darkcyan;
+  height: 25px;
   position: relative;
+  line-height: 28px;
 }
-.wrapper .container .content .content_body .name_group .price_group .price_group_old .price_old .penny {
-  font-size: 16px;
-  line-height: 17px;
+.price_group_old .price_old .penny {
+  font-size: 0.5em;
+  line-height: 0.5em;
   margin: 3px 3px 0 0;
 }
-.wrapper .container .content .content_body .name_group .price_group .price_group_old .line {
+.price_group_old .price_old svg {
+  height: 27px;
+}
+.price_group_old .line {
   position: relative;
   bottom: 16px;
-  border: 3.46909px solid #FF0000;
-  width: 126px;
+  border-bottom: 3.46909px solid #FF0000;
+  transform: rotate(0.53deg);
+  width: 100%;
+  color: red;
 }
-.wrapper .container .content .content_body .name_group .price_group .price_group_old .description_old {
+
+.price_description {
+  height: 40.47px;
+  display: flex;
+  align-items: center;
+  color: #6F7885;
+  text-transform: uppercase;
   font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 18.5018px;
+  font-size: 18.5px;
   line-height: 27px;
-  color: #6F7885;
 }
-.wrapper .container .content .content_body .name_group .price_group .price_group_new {
+
+.price_group_new {
   margin: 39px 0 0 0;
-  background: blue;
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
 }
-.wrapper .container .content .content_body .name_group .price_group .price_group_new .price_stars {
+.price_group_new .price_stars {
   width: 185px;
   height: 53px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.wrapper .container .content .content_body .name_group .price_group .price_group_new .price_stars svg {
-  height: 25px;
+.price_group_new .price_stars svg {
+  color: #344050;
+  height: 30px;
   width: auto;
+  margin-right: 5px;
 }
-.wrapper .container .content .content_body .name_group .price_group .price_group_new .price_new {
+.price_group_new .price_new {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  color: #344050;
+  font-family: "Poppins", sans-serif;
+  height: 52px;
+  position: relative;
   font-style: normal;
   font-weight: 600;
   font-size: 52.0364px;
-  line-height: 27px;
+  line-height: 40px;
+}
+.price_group_new .price_new .penny {
+  font-size: 0.5em;
+  line-height: 0.5em;
+  margin: 3px 3px 0 0;
+}
+.price_group_new .price_new svg {
+  position: relative;
+  bottom: 0.3rem;
+  height: 3rem;
+}
+
+.disclaimer {
+  width: 1200px;
+  height: 118px;
+  color: #6F7885;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 23px;
+}
+
+.mask {
+  position: relative;
+  bottom: 118px;
+  background: rgba(217, 217, 217, 0.22);
+  width: 1200px;
+  height: 118px;
 }
 
 /*# sourceMappingURL=ContentItem.module.css.map */

@@ -1,0 +1,30 @@
+.wrapper {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    font-family: 'Poppins', sans-serif;
+    .logo {
+        position: relative;
+        left: 30px;
+        color: #B6C2D2;
+        height: 13px;
+        width: auto;
+
+    }
+    input {
+        padding: 0 0 0 32px;
+        color: #B6C2D2;
+        width: 320px;
+        height: 36px;
+        border: 1px solid #D8E2EE;
+        border-radius: 18px;
+    }
+    input::placeholder {
+        font-size: 16px;
+        line-height: 16px;
+
+
+    }
+
+}

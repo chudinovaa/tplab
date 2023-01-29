@@ -1,41 +1,61 @@
 import React from 'react';
 import s from './ContentItem.module.scss'
-import {FaChevronLeft} from 'react-icons/fa';
+import {FaChevronLeft, FaRubleSign} from 'react-icons/fa';
 import {AiFillStar, AiOutlineStar} from 'react-icons/ai';
+import triangle from '../../assets/component_arrow.svg'
+import {Link, useNavigate, useParams} from 'react-router-dom';
+import {useAppSelector} from '../../hooks';
+
 
 const ContentItem = () => {
 
-    const priceSlicer = (count: string|number, part: 0|1) => {
+    const {name} = useParams()
+    const {list} = useAppSelector(state => state.products)
+    const product = list.find(product => product.name.replace(/[\/ ()]/g, "_") === name)
+
+    if (!product) {
+        return <>
+            <h1>Can't find the page {name}</h1>
+            <h1><Link to='/'>Назад</Link></h1>
+        </>
+    }
+
+
+    const starsMaker = (stars: number) => {
+        const starsArray = []
+        for (let i = 0; i < 5; i++) {
+            if (stars > 0) {
+                starsArray.push(<AiFillStar key={i}/>)
+                stars--
+            } else {
+                starsArray.push(<AiOutlineStar key={i}/>)
+            }
+        }
+        return starsArray
+    }
+
+    const priceSlicer = (count: string | number, part: 0 | 1) => {
         if (typeof count === 'number') {
             return count.toString().split('.')[part]
         } else {
             return count.split(',')[part]
         }
     }
-    const product = {
-            "name": "Сухой корм для взрослых собак мелких и карликовых пород",
-            "image_url": "https:\/\/4lapy.ru\/resize\/800x800\/upload\/iblock\/714\/7140b69c9d49dd89f1d35b1a99e27d18.jpg",
-            "logo_url": "https:\/\/myzoograd.ru\/upload\/iblock\/f37\/f3733a014d377f291a8d6968badaca27.jpg",
-            "category": "Корм для животных",
-            "views": 12000,
-            "start_date": "2\/22\/2022",
-            "end_date": "8\/22\/2023",
-            "discount": "0",
-            "stars": 0,
-            "old_price": "555,99",
-            "new_price": "555,99",
-            "disclaimer": "Ваша собака будет счастлива"
-        }
 
 
     return (
     <div className={s.wrapper}>
         <div className={s.container}>
-            <div className={s.back}><FaChevronLeft/> Назад</div>
+            <div className={s.back}>
+                <Link to="/"><FaChevronLeft/>Назад</Link>
+            </div>
             <div className={s.content}>
 
                 <div className={s.header}>
-                    <div className={s.discount}>{product.discount}</div>
+                    {Number(product.discount) ? <div className={s.discount}>
+                        <div className={s.rectangular}>-{product.discount}%</div>
+                        <img src={triangle} alt="triangle"/>
+                    </div> : <div></div>}
                     <div className={s.logo}>
                         <img src={product.logo_url} alt={product.name}/>
                     </div>
@@ -45,46 +65,45 @@ const ContentItem = () => {
                     <div className={s.name_group}>
                         <div className={s.name}>{product.name}</div>
                         <div className={s.price_group}>
+                            {product.old_price && product.new_price ?
                             <div className={s.price_group_old}>
                                 <div className={s.price_old}>
-                                    <div className={s.rubles}>{priceSlicer(product.old_price,0)}</div>
-                                    <div className={s.penny}>{priceSlicer(product.old_price,1)}</div>
-                                    ₽
+                                    <div className={s.rubles}>{priceSlicer(product.old_price, 0)}</div>
+                                    <div className={s.penny}>{priceSlicer(product.old_price, 1)}</div>
+                                    <FaRubleSign/>
                                 </div>
                                 <div className={s.line}></div>
-                                <div className={s.description_old}>
+                                <div className={s.price_description}>
                                     СТАРАЯ ЦЕНА
                                 </div>
                             </div>
+                            : <div></div>}
                             <div className={s.price_group_new}>
                                 <div className={s.price_stars}>
-                                    <AiFillStar/>
-                                    <AiFillStar/>
-                                    <AiFillStar/>
-                                    <AiFillStar/>
-                                    <AiFillStar/>
+                                    {starsMaker(Number(product.stars))}
                                 </div>
                                 <div className={s.price_new}>
-                                    {product.new_price}₽
+                                    <div
+                                    className={s.rubles}>{priceSlicer(Number(product.new_price ? product.new_price : product.old_price), 0)}</div>
+                                    <div
+                                    className={s.penny}>{priceSlicer(Number(product.new_price ? product.new_price : product.old_price), 1)}</div>
+                                    <FaRubleSign/>
                                 </div>
-                                <div className={s.description_new}>
+                                {product.old_price && product.new_price ?
+                                <div className={s.price_description}>
                                     ЦЕНА ПО АКЦИИ
-                                </div>
+                                </div> : <div className={s.price_description}></div>}
                             </div>
                         </div>
                     </div>
                 </div>
 
-
-
-                <div>
-                    disclamer
-                </div>
-
-
-
-
-
+                {product.disclaimer ?
+                    <div className={s.disclaimer}>
+                        {product.disclaimer}
+                    </div> : <div className={s.disclaimer}></div>
+                }
+                <div className={s.mask}></div>
 
             </div>
         </div>

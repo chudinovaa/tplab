@@ -1,0 +1,17 @@
+.wrapper {
+  margin-bottom: 16px;
+}
+.wrapper .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.group {
+  display: flex;
+}
+.group div {
+  padding-right: 30px;
+}
+
+/*# sourceMappingURL=Filter.module.css.map */
