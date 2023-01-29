@@ -13,6 +13,7 @@ const ContentItem = () => {
     const {list} = useAppSelector(state => state.products)
     const product = list.find(product => product.name.replace(/[\/ ()]/g, "_") === name)
 
+    // Если сделали неправильный поиск компонента - вывод ошибки и ссылка на главную страницу
     if (!product) {
         return <>
             <h1>Can't find the page {name}</h1>
@@ -20,7 +21,7 @@ const ContentItem = () => {
         </>
     }
 
-
+    // Вывод количества звезд в зависимости от оценки в разделе product.stars
     const starsMaker = (stars: number) => {
         const starsArray = []
         for (let i = 0; i < 5; i++) {
@@ -34,12 +35,20 @@ const ContentItem = () => {
         return starsArray
     }
 
-    const priceSlicer = (count: string | number, part: 0 | 1) => {
+    // Преобразует строку в число, либо вернет число, либо вернет 0
+    const valueToNumber = (count: string | number | undefined | typeof NaN) => {
         if (typeof count === 'number') {
-            return count.toString().split('.')[part]
+            return count
+        } else if (typeof count === 'string') {
+            return Number(count?.replace(/,/g, "."))
         } else {
-            return count.split(',')[part]
+            return 0
         }
+    }
+
+    //Разделяет число на 2 части до точки и после, если число целое дописывает нули
+    const priceSlicer = (count: number, part: 0 | 1) => {
+        return count.toFixed(2).split('.')[part]
     }
 
 
@@ -68,8 +77,8 @@ const ContentItem = () => {
                             {product.old_price && product.new_price ?
                             <div className={s.price_group_old}>
                                 <div className={s.price_old}>
-                                    <div className={s.rubles}>{priceSlicer(product.old_price, 0)}</div>
-                                    <div className={s.penny}>{priceSlicer(product.old_price, 1)}</div>
+                                    <div className={s.rubles}>{priceSlicer(valueToNumber(product.old_price), 0)}</div>
+                                    <div className={s.penny}>{priceSlicer(valueToNumber(product.old_price), 1)}</div>
                                     <FaRubleSign/>
                                 </div>
                                 <div className={s.line}></div>
@@ -84,9 +93,9 @@ const ContentItem = () => {
                                 </div>
                                 <div className={s.price_new}>
                                     <div
-                                    className={s.rubles}>{priceSlicer(Number(product.new_price ? product.new_price : product.old_price), 0)}</div>
+                                    className={s.rubles}>{priceSlicer(valueToNumber(product.new_price) ? valueToNumber(product.new_price) : valueToNumber(product.old_price), 0)}</div>
                                     <div
-                                    className={s.penny}>{priceSlicer(Number(product.new_price ? product.new_price : product.old_price), 1)}</div>
+                                    className={s.penny}>{priceSlicer(valueToNumber(product.new_price) ? valueToNumber(product.new_price) : valueToNumber(product.old_price), 1)}</div>
                                     <FaRubleSign/>
                                 </div>
                                 {product.old_price && product.new_price ?
@@ -98,11 +107,10 @@ const ContentItem = () => {
                     </div>
                 </div>
 
-                {product.disclaimer ?
-                    <div className={s.disclaimer}>
-                        {product.disclaimer}
-                    </div> : <div className={s.disclaimer}></div>
-                }
+                <div className={s.disclaimer}>
+                    {product.disclaimer && product.disclaimer}
+                </div>
+
                 <div className={s.mask}></div>
 
             </div>

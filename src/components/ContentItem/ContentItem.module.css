@@ -1,6 +1,6 @@
 .wrapper {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   background: #EDF2F8;
@@ -136,6 +136,7 @@
   height: 25px;
   position: relative;
   line-height: 28px;
+  margin-bottom: 10px;
 }
 .price_group_old .price_old .penny {
   font-size: 0.5em;
@@ -147,7 +148,7 @@
 }
 .price_group_old .line {
   position: relative;
-  bottom: 16px;
+  bottom: 23px;
   border-bottom: 3.46909px solid #FF0000;
   transform: rotate(0.53deg);
   width: 100%;
