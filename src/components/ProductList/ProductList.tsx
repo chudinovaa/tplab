@@ -2,8 +2,12 @@ import React from 'react';
 import s from './ProductList.module.scss'
 import ProductItem from '../ProductItem/ProductItem';
 import {useAppSelector} from '../../hooks';
-import {Link} from 'react-router-dom';
+import {Link, useSearchParams} from 'react-router-dom';
 const ProductList = () => {
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const searchQuery = searchParams.get('search') || ''
+
 
     const {loading, error, list} = useAppSelector(state => state.products)
 
@@ -25,7 +29,9 @@ const ProductList = () => {
         <div className={s.list}>
             {loading && <h2>Loading...</h2>}
             {error && <h2>An error occurred: {error}</h2>}
-            {list && list.map(product =>
+            {list && list.filter(
+                product => product.name.toLowerCase().includes(searchQuery.toLowerCase()))
+            .map(product =>
             <Link key={product.name} to={`/${product.name.replace(/[\/ ()]/g, "_")}`}>
             <ProductItem {...product} />
             </Link>)
