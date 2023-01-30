@@ -12,8 +12,7 @@
 
 .back {
   margin: 76px 0 48px 0;
-}
-.back a {
+  cursor: pointer;
   color: #344050;
   text-decoration: none;
   font-family: "Poppins", sans-serif;
@@ -22,7 +21,7 @@
   font-size: 18px;
   line-height: 21px;
 }
-.back a svg {
+.back svg {
   height: 12px;
 }
 

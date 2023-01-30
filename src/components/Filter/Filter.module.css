@@ -9,9 +9,22 @@
 
 .group {
   display: flex;
+  color: #4D5969;
 }
 .group div {
   padding-right: 30px;
+}
+
+.sort {
+  color: #2A7BE4;
+  display: flex;
+}
+.sort div {
+  padding-right: 30px;
+  cursor: pointer;
+}
+.sort .active {
+  color: #344050;
 }
 
 /*# sourceMappingURL=Filter.module.css.map */

@@ -1,16 +1,20 @@
 import {AnyAction, createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {IProduct} from '../models/models';
 
+export type sortType = 'name' | 'views' | 'start_date' | 'end_date'| ''
+
 type ProductsState = {
     list: IProduct[],
     loading: boolean,
-    error: null | string
+    error: null | string,
+
 }
 
 const initialState: ProductsState = {
     list: [],
     loading: false,
-    error: null
+    error: null,
+
 }
 
 
@@ -27,7 +31,9 @@ async function (_, {rejectWithValue}) {
 const productSlice = createSlice({
     name: 'products',
     initialState,
-    reducers: {},
+    reducers: {
+
+    },
     extraReducers: (builder) => {
         builder
         .addCase(fetchProducts.pending, (state) => {
@@ -46,7 +52,6 @@ const productSlice = createSlice({
 })
 
 export default productSlice.reducer
-
 
 function isError(action: AnyAction) {
     return action.type.endsWith('rejected')

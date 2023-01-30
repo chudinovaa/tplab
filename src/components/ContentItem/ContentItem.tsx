@@ -8,6 +8,7 @@ import {useAppSelector} from '../../hooks';
 
 
 const ContentItem = () => {
+    const navigate= useNavigate()
 
     const {name} = useParams()
     const {list} = useAppSelector(state => state.products)
@@ -55,8 +56,8 @@ const ContentItem = () => {
     return (
     <div className={s.wrapper}>
         <div className={s.container}>
-            <div className={s.back}>
-                <Link to="/"><FaChevronLeft/>Назад</Link>
+            <div className={s.back} onClick={() => navigate(-1)}>
+                <span><FaChevronLeft/>Назад</span>
             </div>
             <div className={s.content}>
 
