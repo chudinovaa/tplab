@@ -1,5 +1,6 @@
 import {AnyAction, createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {IProduct} from '../models/models';
+import React from 'react';
 
 export type sortType = 'name' | 'views' | 'start_date' | 'end_date'| ''
 
@@ -7,13 +8,18 @@ type ProductsState = {
     list: IProduct[],
     loading: boolean,
     error: null | string,
-
+    currentPage: number,
+    perPage: number,
+    itemsCount: number
 }
 
 const initialState: ProductsState = {
     list: [],
     loading: false,
     error: null,
+    currentPage: 1,
+    perPage: 5,
+    itemsCount: 0
 
 }
 
@@ -32,6 +38,19 @@ const productSlice = createSlice({
     name: 'products',
     initialState,
     reducers: {
+        setCurrentPage(state, action :PayloadAction<number>) {
+            state.currentPage = action.payload
+        },
+        setPerPage (state, action :PayloadAction<number>) {
+            state.perPage = action.payload
+        },
+        setItemsCount (state, action :PayloadAction<number>) {
+            if (action.payload) {
+                state.itemsCount = action.payload
+            } else {
+                state.itemsCount = Math.ceil(state.list.length/state.perPage)
+            }
+        }
 
     },
     extraReducers: (builder) => {
@@ -52,6 +71,7 @@ const productSlice = createSlice({
 })
 
 export default productSlice.reducer
+export const {setCurrentPage,setPerPage,setItemsCount} = productSlice.actions
 
 function isError(action: AnyAction) {
     return action.type.endsWith('rejected')
