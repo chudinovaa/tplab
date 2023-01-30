@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/chudinovaa/tplab/static/css/main.7d282d42.css",
-    "main.js": "/chudinovaa/tplab/static/js/main.3f984c13.js",
+    "main.js": "/chudinovaa/tplab/static/js/main.70338502.js",
     "index.html": "/chudinovaa/tplab/index.html",
     "static/media/component_arrow.svg": "/chudinovaa/tplab/static/media/component_arrow.9db12a553e6c067467c0c9c3dc8adf79.svg",
     "main.7d282d42.css.map": "/chudinovaa/tplab/static/css/main.7d282d42.css.map",
-    "main.3f984c13.js.map": "/chudinovaa/tplab/static/js/main.3f984c13.js.map"
+    "main.70338502.js.map": "/chudinovaa/tplab/static/js/main.70338502.js.map"
   },
   "entrypoints": [
     "static/css/main.7d282d42.css",
-    "static/js/main.3f984c13.js"
+    "static/js/main.70338502.js"
   ]
 }
