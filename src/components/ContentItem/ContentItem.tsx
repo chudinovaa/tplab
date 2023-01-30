@@ -8,7 +8,7 @@ import {useAppSelector} from '../../hooks';
 
 
 const ContentItem = () => {
-    const navigate= useNavigate()
+    const navigate = useNavigate()
 
     const {name} = useParams()
     const {list} = useAppSelector(state => state.products)

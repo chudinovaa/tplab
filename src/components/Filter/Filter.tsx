@@ -9,6 +9,7 @@ const Filter = () => {
     const searchQuery = searchParams.get('search') || ''
     const sortQuery = searchParams.get('sort') || ''
 
+    //Меняем тип сортировки
     const changeSort = (sort: sortType, num: number) => {
         setSearchParams({sort: sort, search: searchQuery})
     }

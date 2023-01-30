@@ -4,7 +4,7 @@ import ProductItem from '../ProductItem/ProductItem';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {Link, useSearchParams} from 'react-router-dom';
 import {IProduct} from '../../models/models';
-import {setItemsCount} from '../../store/productSlice';
+import {setCurrentPage, setItemsCount} from '../../store/productSlice';
 
 const ProductList = () => {
     const dispatch = useAppDispatch()
@@ -13,12 +13,12 @@ const ProductList = () => {
     const sortQuery = searchParams.get('sort') || ''
     const {loading, error, list, currentPage, perPage} = useAppSelector(state => state.products)
 
-
+//Ищем по именам в массиве
     const searchByName = (arr: IProduct[], search: string) => {
         return arr.filter(product => product.name.toLowerCase().includes(search.toLowerCase()))
     }
 
-
+//Сортировка массива
     const sortByType = (arr: IProduct[], sort: string) => {
         if (sort === 'name') {
             return arr.sort((a, b) => a.name > b.name ? 1 : -1)
@@ -40,18 +40,19 @@ const ProductList = () => {
         }
     }
 
+//Делим массив на страницы
     const pagination = (arr: IProduct[]) => {
         const start = perPage * (currentPage - 1)
         const end = perPage + start
         return arr.slice(start,end)
     }
 
+//Получаем отсортированный массив + все совпадения поиска
     const sortedSearchedList = sortByType(searchByName(list, searchQuery), sortQuery)
 
     useEffect(() => {
         dispatch(setItemsCount(sortedSearchedList.length))
     },[sortedSearchedList])
-
 
 
 

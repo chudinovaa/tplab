@@ -2,8 +2,11 @@ import React, {useEffect, useState} from 'react';
 import s from './Search.module.scss'
 import {FaSearch} from 'react-icons/fa';
 import {useSearchParams} from 'react-router-dom';
+import {setCurrentPage} from '../../store/productSlice';
+import {useAppDispatch} from '../../hooks';
 
 const Search = () => {
+    const dispatch = useAppDispatch()
     const [searchParams, setSearchParams] = useSearchParams()
     const searchQuery = searchParams.get('search') || ''
     const sortQuery = searchParams.get('sort') || ''
@@ -13,21 +16,22 @@ const Search = () => {
         setSearchParams({sort: sortQuery || 'name', search: search})
     }, [])
 
-    const onChangeHandle = (e: React.FormEvent<HTMLInputElement>) => {
-        setSearch(e.currentTarget.value)
-    }
-
     useEffect(() => {
         if (!search && searchQuery) {
             setSearchParams({sort: sortQuery, search: search})
         }
+
     })
+
+    const onChangeHandle = (e: React.FormEvent<HTMLInputElement>) => {
+        setSearch(e.currentTarget.value)
+    }
 
 
     const onSubmitHandle = (event: React.SyntheticEvent) => {
         event.preventDefault()
         setSearchParams({sort: sortQuery, search: search})
-
+        dispatch(setCurrentPage(1))
     }
 
     return (

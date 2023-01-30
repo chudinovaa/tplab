@@ -8,6 +8,7 @@ const Pagination = () => {
     const dispatch = useAppDispatch()
     const [totalPages, setTotalPages] = useState(0)
 
+
     useEffect(() => {
         dispatch(setItemsCount(0))
     },[])
@@ -16,11 +17,7 @@ const Pagination = () => {
         setTotalPages(Math.ceil(itemsCount/perPage))
     },[itemsCount])
 
-    console.log('itemsCount', itemsCount)
-    console.log('perPage', perPage)
-    console.log('currentPage', currentPage)
-    console.log('totalPages', totalPages)
-
+//Создаем массив кнопок из количества страниц
     function createButtons(num: number) {
         let buttons = [];
         for (let i = 1; i < num+1; i++) {
@@ -36,6 +33,7 @@ const Pagination = () => {
         return buttons;
     }
 
+    //Переключаем страницы кнопками влево и вправо
     const switchPage = (num: 1 | -1) => {
         if (num === -1 && currentPage > 1 || num === 1 && currentPage < totalPages) {
             dispatch(setCurrentPage(currentPage + num))
