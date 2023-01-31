@@ -1,7 +1,8 @@
 {
   "name": "tplab",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "https://github.com/chudinovaa/tplab",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
@@ -26,7 +27,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server -w server/products.json -p 3001"
+    "server": "json-server -w server/products.json -p 3001",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +50,6 @@
     ]
   },
   "devDependencies": {
-    "json-server": "^0.17.1"
+    "gh-pages": "^5.0.0"
   }
 }

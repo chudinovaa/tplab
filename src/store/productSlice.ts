@@ -2,7 +2,7 @@ import {AnyAction, createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/
 import {IProduct} from '../models/models';
 import React from 'react';
 
-export type sortType = 'name' | 'views' | 'start_date' | 'end_date'| ''
+export type sortType = 'name' | 'views' | 'start_date' | 'end_date' | ''
 
 type ProductsState = {
     list: IProduct[],
@@ -27,28 +27,28 @@ const initialState: ProductsState = {
 export const fetchProducts = createAsyncThunk<IProduct[], undefined, { rejectValue: string }>(
 'products/fetchProducts',
 async function (_, {rejectWithValue}) {
-        const response = await fetch('http://localhost:3001/products')
-        if (!response?.ok) {
-            return rejectWithValue("Server error")
-        }
-        return await response.json()
+    const response = await fetch('https://files.rerotor.ru/rerotor/products.json')
+    if (!response?.ok) {
+        return rejectWithValue("Server error")
+    }
+    return await response.json()
 })
 
 const productSlice = createSlice({
     name: 'products',
     initialState,
     reducers: {
-        setCurrentPage(state, action :PayloadAction<number>) {
+        setCurrentPage(state, action: PayloadAction<number>) {
             state.currentPage = action.payload
         },
-        setPerPage (state, action :PayloadAction<number>) {
+        setPerPage(state, action: PayloadAction<number>) {
             state.perPage = action.payload
         },
-        setItemsCount (state, action :PayloadAction<number>) {
+        setItemsCount(state, action: PayloadAction<number>) {
             if (action.payload) {
                 state.itemsCount = action.payload
             } else {
-                state.itemsCount = Math.ceil(state.list.length/state.perPage)
+                state.itemsCount = Math.ceil(state.list.length / state.perPage)
             }
         }
 
@@ -71,7 +71,7 @@ const productSlice = createSlice({
 })
 
 export default productSlice.reducer
-export const {setCurrentPage,setPerPage,setItemsCount} = productSlice.actions
+export const {setCurrentPage, setPerPage, setItemsCount} = productSlice.actions
 
 function isError(action: AnyAction) {
     return action.type.endsWith('rejected')
