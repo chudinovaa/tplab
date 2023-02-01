@@ -1,8 +1,7 @@
 {
   "name": "tplab",
   "version": "0.1.0",
-  "private": false,
-  "homepage": "https://github.com/chudinovaa/tplab",
+  "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",

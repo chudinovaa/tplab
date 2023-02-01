@@ -7,7 +7,7 @@ import {fetchProducts} from './store/productSlice';
 
 function App() {
     const dispatch = useAppDispatch()
-    const {list} = useAppSelector(state => state.products)
+
     useEffect(() => {
             dispatch(fetchProducts())
     },[])
