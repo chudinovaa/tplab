@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './ContentItem.module.scss'
 import {FaChevronLeft, FaRubleSign} from 'react-icons/fa';
-import {AiFillStar, AiOutlineStar} from 'react-icons/ai';
 import triangle from '../../assets/component_arrow.svg'
 import {Link, useNavigate, useParams} from 'react-router-dom';
-import {useAppSelector} from '../../hooks';
+import {useAppSelector} from '../../hooks/hooks';
+import {valueToNumber} from '../../utils/data/valueToNumber';
+import {numberSlicer} from '../../utils/data/numberSlicer';
+import {starsMaker} from '../../utils/elements/starsMaker';
 
 
 const ContentItem = () => {
@@ -20,37 +22,6 @@ const ContentItem = () => {
             <h1><Link to='/'>Назад</Link></h1>
         </>
     }
-
-    // Вывод количества звезд в зависимости от оценки в разделе product.stars
-    const starsMaker = (stars: number) => {
-        const starsArray = []
-        for (let i = 0; i < 5; i++) {
-            if (stars > 0) {
-                starsArray.push(<AiFillStar key={i}/>)
-                stars--
-            } else {
-                starsArray.push(<AiOutlineStar key={i}/>)
-            }
-        }
-        return starsArray
-    }
-
-    // Преобразует строку в число, либо вернет число, либо вернет 0
-    const valueToNumber = (count: string | number | undefined | typeof NaN) => {
-        if (typeof count === 'number') {
-            return count
-        } else if (typeof count === 'string') {
-            return Number(count?.replace(/,/g, "."))
-        } else {
-            return 0
-        }
-    }
-
-    //Разделяет число на 2 части до точки и после, если число целое дописывает нули
-    const priceSlicer = (count: number, part: 0 | 1) => {
-        return count.toFixed(2).split('.')[part]
-    }
-
 
     return (
     <div className={styles.wrapper}>
@@ -78,9 +49,9 @@ const ContentItem = () => {
                             <div className={styles.price_group_old}>
                                 <div className={styles.price_old}>
                                     <div
-                                    className={styles.rubles}>{priceSlicer(valueToNumber(product.old_price), 0)}</div>
+                                    className={styles.rubles}>{numberSlicer(valueToNumber(product.old_price), 0)}</div>
                                     <div
-                                    className={styles.penny}>{priceSlicer(valueToNumber(product.old_price), 1)}</div>
+                                    className={styles.penny}>{numberSlicer(valueToNumber(product.old_price), 1)}</div>
                                     <FaRubleSign/>
                                 </div>
                                 <div className={styles.line}></div>
@@ -95,9 +66,9 @@ const ContentItem = () => {
                                 </div>
                                 <div className={styles.price_new}>
                                     <div
-                                    className={styles.rubles}>{priceSlicer(valueToNumber(product.new_price) ? valueToNumber(product.new_price) : valueToNumber(product.old_price), 0)}</div>
+                                    className={styles.rubles}>{numberSlicer(valueToNumber(product.new_price) ? valueToNumber(product.new_price) : valueToNumber(product.old_price), 0)}</div>
                                     <div
-                                    className={styles.penny}>{priceSlicer(valueToNumber(product.new_price) ? valueToNumber(product.new_price) : valueToNumber(product.old_price), 1)}</div>
+                                    className={styles.penny}>{numberSlicer(valueToNumber(product.new_price) ? valueToNumber(product.new_price) : valueToNumber(product.old_price), 1)}</div>
                                     <FaRubleSign/>
                                 </div>
                                 {product.old_price && product.new_price ?

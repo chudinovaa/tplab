@@ -13,11 +13,9 @@ document.getElementById('root') as HTMLElement
 root.render(
 <React.StrictMode>
     <Provider store={store}>
-        {/*<BrowserRouter  basename={process.env.PUBLIC_URL}>*/}
         <BrowserRouter>
             <App/>
         </BrowserRouter>
-        {/*</BrowserRouter>*/}
     </Provider>
 </React.StrictMode>
 );

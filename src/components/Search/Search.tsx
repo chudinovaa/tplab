@@ -3,7 +3,7 @@ import styles from './Search.module.scss'
 import {FaSearch} from 'react-icons/fa';
 import {useSearchParams} from 'react-router-dom';
 import {setCurrentPage} from '../../store/productSlice';
-import {useAppDispatch} from '../../hooks';
+import {useAppDispatch} from '../../hooks/hooks';
 
 const Search = () => {
     const dispatch = useAppDispatch()

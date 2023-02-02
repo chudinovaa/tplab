@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {Routes, Route} from 'react-router-dom';
 import ProductsPage from './pages/ProductsPage';
 import ProductItemPage from './pages/ProductItemPage';
-import {useAppDispatch} from './hooks';
+import {useAppDispatch} from './hooks/hooks';
 import {fetchProducts} from './store/productSlice';
 
 function App() {

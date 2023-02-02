@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import styles from './ProductList.module.scss'
 import {ProductItem} from '../ProductItem/ProductItem';
-import {useAppDispatch, useAppSelector} from '../../hooks';
+import {useAppDispatch, useAppSelector} from '../../hooks/hooks';
 import {Link, useSearchParams} from 'react-router-dom';
 import {IProduct} from '../../models/models';
 import {setItemsCount} from '../../store/productSlice';

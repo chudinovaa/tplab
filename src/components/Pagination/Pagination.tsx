@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from './Pagination.module.scss'
 import {FaChevronLeft, FaChevronRight} from 'react-icons/fa';
-import {useAppDispatch, useAppSelector} from '../../hooks';
+import {useAppDispatch, useAppSelector} from '../../hooks/hooks';
 import {setCurrentPage, setItemsCount} from '../../store/productSlice';
 const Pagination = () => {
     const {itemsCount,perPage,currentPage} = useAppSelector(state => state.products)
