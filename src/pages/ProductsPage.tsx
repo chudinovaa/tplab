@@ -1,12 +1,10 @@
 import React from 'react';
 import {ContentCards} from '../components/ContentCards/ContentCards';
 
-const ProductsPage = () => {
-    return (
+export const ProductsPage = () => {
+  return (
     <div>
-        <ContentCards/>
+      <ContentCards/>
     </div>
-    );
+  );
 };
-
-export default ProductsPage;

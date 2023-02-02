@@ -1,12 +1,10 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {ContentItem} from '../components/ContentItem/ContentItem';
 
-const ProductItemPage = () => {
-    return (
+export const ProductItemPage: FC = () => {
+  return (
     <div>
-        <ContentItem/>
+      <ContentItem/>
     </div>
-    );
+  );
 };
-
-export default ProductItemPage;

@@ -1,33 +1,35 @@
 .wrapper {
-    margin-bottom: 16px;
-    .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+  margin-bottom: 16px;
 
-    }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
 
 }
 
 .group {
-    display: flex;
-    color: #4D5969;
+  display: flex;
+  color: #4D5969;
 
-    div {
-        padding-right: 30px;
-    }
+  div {
+    padding-right: 30px;
+  }
 }
 
 .sort {
-    color: #2A7BE4;
-    display: flex;
-    div {
-        padding-right: 30px;
-        cursor: pointer;
+  color: #2A7BE4;
+  display: flex;
 
-    }
+  div {
+    padding-right: 30px;
+    cursor: pointer;
 
-    .active {
-        color: #344050;
-    }
+  }
+
+  .active {
+    color: #344050;
+  }
 }

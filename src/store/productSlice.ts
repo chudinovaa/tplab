@@ -5,74 +5,74 @@ import React from 'react';
 export type sortType = 'name' | 'views' | 'start_date' | 'end_date' | ''
 
 type ProductsState = {
-    list: IProduct[],
-    loading: boolean,
-    error: null | string,
-    currentPage: number,
-    perPage: number,
-    itemsCount: number
+  list: IProduct[],
+  loading: boolean,
+  error: null | string,
+  currentPage: number,
+  perPage: number,
+  itemsCount: number
 }
 
 const initialState: ProductsState = {
-    list: [],
-    loading: false,
-    error: null,
-    currentPage: 1,
-    perPage: 5,
-    itemsCount: 0
+  list: [],
+  loading: false,
+  error: null,
+  currentPage: 1,
+  perPage: 5,
+  itemsCount: 1
 
 }
 
 
 export const fetchProducts = createAsyncThunk<IProduct[], undefined, { rejectValue: string }>(
-'products/fetchProducts',
-async function (_, {rejectWithValue}) {
+  'products/fetchProducts',
+  async function (_, {rejectWithValue}) {
     const response = await fetch('https://files.rerotor.ru/rerotor/products.json')
     if (!response?.ok) {
-        return rejectWithValue("Server error")
+      return rejectWithValue("Server error")
     }
     return await response.json()
-})
+  })
 
 const productSlice = createSlice({
-    name: 'products',
-    initialState,
-    reducers: {
-        setCurrentPage(state, action: PayloadAction<number>) {
-            state.currentPage = action.payload
-        },
-        setPerPage(state, action: PayloadAction<number>) {
-            state.perPage = action.payload
-        },
-        setItemsCount(state, action: PayloadAction<number>) {
-            if (action.payload) {
-                state.itemsCount = action.payload
-            } else {
-                state.itemsCount = Math.ceil(state.list.length / state.perPage)
-            }
-        }
-
+  name: 'products',
+  initialState,
+  reducers: {
+    setCurrentPage(state, action: PayloadAction<number>) {
+      state.currentPage = action.payload
     },
-    extraReducers: (builder) => {
-        builder
-        .addCase(fetchProducts.pending, (state) => {
-            state.loading = true
-            state.error = null
-        })
-        .addCase(fetchProducts.fulfilled, (state, action) => {
-            state.list = action.payload
-            state.loading = false
-        })
-        .addMatcher(isError, (state, action: PayloadAction<string>) => {
-            state.error = action.payload
-            state.loading = false
-        })
+    setPerPage(state, action: PayloadAction<number>) {
+      state.perPage = action.payload
+    },
+    setItemsCount(state, action: PayloadAction<number>) {
+      if (action.payload) {
+        state.itemsCount = action.payload
+      } else {
+        state.itemsCount = Math.ceil(state.list.length / state.perPage)
+      }
     }
+
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchProducts.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.list = action.payload
+        state.loading = false
+      })
+      .addMatcher(isError, (state, action: PayloadAction<string>) => {
+        state.error = action.payload
+        state.loading = false
+      })
+  }
 })
 
 export default productSlice.reducer
 export const {setCurrentPage, setPerPage, setItemsCount} = productSlice.actions
 
 function isError(action: AnyAction) {
-    return action.type.endsWith('rejected')
+  return action.type.endsWith('rejected')
 }

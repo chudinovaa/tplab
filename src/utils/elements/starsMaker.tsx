@@ -2,14 +2,14 @@
 import {AiFillStar, AiOutlineStar} from 'react-icons/ai';
 
 export const starsMaker = (stars: number) => {
-    const starsArray = []
-    for (let i = 0; i < 5; i++) {
-        if (stars > 0) {
-            starsArray.push(<AiFillStar key={i}/>)
-            stars--
-        } else {
-            starsArray.push(<AiOutlineStar key={i}/>)
-        }
+  const starsArray = []
+  for (let i = 0; i < 5; i++) {
+    if (stars > 0) {
+      starsArray.push(<AiFillStar key={i}/>)
+      stars--
+    } else {
+      starsArray.push(<AiOutlineStar key={i}/>)
     }
-    return starsArray
+  }
+  return starsArray
 }
