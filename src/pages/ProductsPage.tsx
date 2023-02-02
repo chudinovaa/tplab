@@ -1,5 +1,5 @@
 import React from 'react';
-import ContentCards from '../components/ContentCards/ContentCards';
+import {ContentCards} from '../components/ContentCards/ContentCards';
 
 const ProductsPage = () => {
     return (

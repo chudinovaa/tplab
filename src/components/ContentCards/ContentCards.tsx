@@ -1,12 +1,13 @@
 import React from 'react';
-import s from './ContentCards.module.scss'
-import ProductList from '../ProductList/ProductList';
-import Pagination from '../Pagination/Pagination';
-import Filter from '../Filter/Filter';
+import styles from './ContentCards.module.scss'
+import {ProductList} from '../ProductList/ProductList';
+import {Pagination} from '../Pagination/Pagination';
+import {Filter} from '../Filter/Filter';
+
 const ContentCards = () => {
     return (
-    <div className={s.wrapper}>
-        <div className={s.content_wrapper}>
+    <div className={styles.wrapper}>
+        <div className={styles.content_wrapper}>
             <p>Карточки контента</p>
             <Filter/>
             <Pagination/>
@@ -17,4 +18,5 @@ const ContentCards = () => {
     );
 };
 
-export default ContentCards;
+export {ContentCards}
+

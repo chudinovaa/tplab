@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import s from './Search.module.scss'
+import styles from './Search.module.scss'
 import {FaSearch} from 'react-icons/fa';
 import {useSearchParams} from 'react-router-dom';
 import {setCurrentPage} from '../../store/productSlice';
@@ -35,9 +35,9 @@ const Search = () => {
     }
 
     return (
-    <div className={s.wrapper}>
+    <div className={styles.wrapper}>
         <form autoComplete="off" onSubmit={onSubmitHandle}>
-            <FaSearch className={s.logo}/>
+            <FaSearch className={styles.logo}/>
             <input
             onChange={e => onChangeHandle(e)}
             value={search}
@@ -49,4 +49,4 @@ const Search = () => {
     );
 };
 
-export default Search;
+export {Search};

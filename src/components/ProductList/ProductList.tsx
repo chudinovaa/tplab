@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
-import s from './ProductList.module.scss'
-import ProductItem from '../ProductItem/ProductItem';
+import styles from './ProductList.module.scss'
+import {ProductItem} from '../ProductItem/ProductItem';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {Link, useSearchParams} from 'react-router-dom';
 import {IProduct} from '../../models/models';
@@ -57,21 +57,21 @@ const ProductList = () => {
 
 
     return (
-    <div className={s.wrapper}>
-        <div className={s.container}>
-            <div className={s.table_header}>
-                <div className={s.table_group}>
-                    <div className={s.first}>Фото</div>
-                    <div className={s.second}>Название</div>
+    <div className={styles.wrapper}>
+        <div className={styles.container}>
+            <div className={styles.table_header}>
+                <div className={styles.table_group}>
+                    <div className={styles.first}>Фото</div>
+                    <div className={styles.second}>Название</div>
                 </div>
-                <div className={s.table_group}>
-                    <div className={s.third}>Просмотры</div>
-                    <div className={s.forth}>Начало ротации</div>
-                    <div className={s.fifth}>Конец ротации</div>
+                <div className={styles.table_group}>
+                    <div className={styles.third}>Просмотры</div>
+                    <div className={styles.forth}>Начало ротации</div>
+                    <div className={styles.fifth}>Конец ротации</div>
                 </div>
             </div>
         </div>
-        <div className={s.list}>
+        <div className={styles.list}>
             {loading && <h2>Loading...</h2>}
             {error && <h2>An error occurred: {error}</h2>}
             {list && pagination(sortedSearchedList)
@@ -85,4 +85,4 @@ const ProductList = () => {
     );
 };
 
-export default ProductList;
+export {ProductList};

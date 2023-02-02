@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import s from './Pagination.module.scss'
+import styles from './Pagination.module.scss'
 import {FaChevronLeft, FaChevronRight} from 'react-icons/fa';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {setCurrentPage, setItemsCount} from '../../store/productSlice';
@@ -23,7 +23,7 @@ const Pagination = () => {
         for (let i = 1; i < num+1; i++) {
             buttons.push(<button
             onClick={() => dispatch(setCurrentPage(i))}
-            className={currentPage === i ? s.active : ''}
+            className={currentPage === i ? styles.active : ''}
             key={i}
             >
                 {i}
@@ -41,7 +41,7 @@ const Pagination = () => {
     }
 
     return (
-    <div className={s.wrapper}>
+    <div className={styles.wrapper}>
         <button onClick={() => switchPage(-1)}><FaChevronLeft/></button>
             {totalPages && createButtons(totalPages)}
         <button onClick={() => switchPage(1)}><FaChevronRight/></button>
@@ -49,4 +49,4 @@ const Pagination = () => {
     );
 };
 
-export default Pagination;
+export {Pagination};

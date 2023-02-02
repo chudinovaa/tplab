@@ -1,5 +1,5 @@
 import React from 'react';
-import ContentItem from '../components/ContentItem/ContentItem';
+import {ContentItem} from '../components/ContentItem/ContentItem';
 
 const ProductItemPage = () => {
     return (
